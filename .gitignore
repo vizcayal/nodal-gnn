@@ -1,0 +1,6 @@
+PGLearn-Small-*/
+csml-env/
+__pycache__/
+*.h5
+*.h5.gz
+csv_output/
