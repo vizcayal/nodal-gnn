@@ -1,0 +1,62 @@
+
+--- Inspecting C:\Users\luisv\ML-AI\case studies of ml\nodal-gnn\PGLearn-Small-30_ieee\train\input.h5.gz ---
+branch_status
+    Shape: (793067, 41), Type: uint8
+gen_status
+    Shape: (793067, 6), Type: uint8
+pd
+    Shape: (793067, 21), Type: float32
+qd
+    Shape: (793067, 21), Type: float32
+reserve_requirement
+    Shape: (793067,), Type: float32
+rmax
+    Shape: (793067, 6), Type: float32
+rmin
+    Shape: (793067, 6), Type: float32
+seed
+    Shape: (793067,), Type: int64
+
+--- Inspecting C:\Users\luisv\ML-AI\case studies of ml\nodal-gnn\PGLearn-Small-30_ieee\train\DCOPF\primal.h5.gz ---
+pf
+    Shape: (793067, 41), Type: float32
+pg
+    Shape: (793067, 6), Type: float32
+va
+    Shape: (793067, 30), Type: float32
+
+--- Inspecting C:\Users\luisv\ML-AI\case studies of ml\nodal-gnn\PGLearn-Small-30_ieee\train\DCOPF\dual.h5.gz ---
+kcl_p
+    Shape: (793067, 30), Type: float32
+ohm_pf
+    Shape: (793067, 41), Type: float32
+pf
+    Shape: (793067, 41), Type: float32
+pg
+    Shape: (793067, 6), Type: float32
+slack_bus
+    Shape: (793067,), Type: float32
+va_diff
+    Shape: (793067, 41), Type: float32
+
+--- Inspecting C:\Users\luisv\ML-AI\case studies of ml\nodal-gnn\PGLearn-Small-30_ieee\train\DCOPF\meta.h5.gz ---
+build_time
+    Shape: (793067,), Type: float32
+dual_objective_value
+    Shape: (793067,), Type: float32
+dual_status
+    Shape: (793067,), Type: object
+extract_time
+    Shape: (793067,), Type: float32
+formulation
+    Shape: (793067,), Type: object
+primal_objective_value
+    Shape: (793067,), Type: float32
+primal_status
+    Shape: (793067,), Type: object
+seed
+    Shape: (793067,), Type: int64
+solve_time
+    Shape: (793067,), Type: float32
+termination_status
+    Shape: (793067,), Type: object
