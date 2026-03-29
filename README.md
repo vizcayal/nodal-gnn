@@ -9,8 +9,8 @@ the IEEE-32 model contains n buses, x generators and (insert image)
 
 Algorithms:
 
-1. Message Passing Neural Networks (MPNN)
-2. Graph Attention Networks (GAT)
-3. Edge-conditional Graph Neural Networks (Edge-conditioned GNN)
-4. Graph Sample and Aggregate (GraphSAGE)
-5. Graph Convolutional Networks (GCN)
+1. Graph Convolutional Networks (GCN)
+2. Graph Sample and Aggregate (GraphSAGE)
+3. Graph Attention Networks (GAT)
+4. Message Passing Neural Networks (MPNN)
+5. Edge-conditional Graph Neural Networks (Edge-conditioned GNN)
