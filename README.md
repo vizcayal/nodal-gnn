@@ -1,3 +1,5 @@
+# Nodal GNN
+
 Summary:
 
 Determine congestion on the electrical grids, by using graph-based 
@@ -14,3 +16,4 @@ Algorithms:
 3. Graph Attention Networks (GAT)
 4. Message Passing Neural Networks (MPNN)
 5. Edge-conditional Graph Neural Networks (Edge-conditioned GNN)
+6. Physics-Informed Neural Networks (PINN)
