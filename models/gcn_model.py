@@ -6,7 +6,7 @@ import torch.nn as nn
 
 class GCNEdgePredictor(torch.nn.Module):
     """Deep GCN (5 layers) with BatchNorm and Residual Connections for edge-level
-    congestion prediction on the IEEE 30-bus grid.
+    congestion prediction on the IEEE 57-bus grid.
 
     Architecture:
         1. Linear projection: in_channels → hidden_channels
@@ -56,9 +56,9 @@ class GCNEdgePredictor(torch.nn.Module):
             x = F.dropout(x, p=self.dropout_rate, training=self.training)
             x = x + residual  # skip / residual connection
 
-        # Step 3 – edge predictions aligned with the 41-branch label vector
+        # Step 3 – edge predictions aligned with the 80-branch label vector
         num_graphs = batch.num_graphs
-        num_nodes_per_graph = 30
+        num_nodes_per_graph = 57  # Fixed for IEEE-57
 
         offsets = torch.arange(
             0, num_graphs * num_nodes_per_graph, num_nodes_per_graph, device=x.device

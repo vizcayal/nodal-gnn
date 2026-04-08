@@ -6,7 +6,7 @@ from torch_geometric.nn import NNConv
 
 class ECGNNEdgePredictor(torch.nn.Module):
     """Deep Edge-Conditioned Graph Neural Network (ECGNN) model with BatchNorm 
-    and Residual Connections for edge-level congestion prediction on the IEEE 30-bus grid.
+    and Residual Connections for edge-level congestion prediction on the IEEE 57-bus grid.
 
     Architecture:
         1. Linear projection: in_channels -> hidden_channels
@@ -24,17 +24,23 @@ class ECGNNEdgePredictor(torch.nn.Module):
 
         self.input_proj = nn.Linear(in_channels, hidden_channels)
 
+        # Use a low-rank bottleneck to keep NNConv memory-efficient.
+        # Instead of outputting hidden² directly, project through a small rank.
+        self.rank = min(32, hidden_channels)
+
         self.convs = nn.ModuleList()
         self.bns = nn.ModuleList()
         for _ in range(num_layers):
-            # NNConv maps edge_attr (2*hidden_channels) to a weight matrix of shape [hidden_channels, hidden_channels]
             nn_edge = nn.Sequential(
-                nn.Linear(2 * hidden_channels, 32),
+                nn.Linear(2 * hidden_channels, 64),
                 nn.ReLU(),
-                nn.Linear(32, hidden_channels * hidden_channels)
+                nn.Linear(64, hidden_channels * self.rank)
             )
-            self.convs.append(NNConv(hidden_channels, hidden_channels, nn=nn_edge, aggr='mean'))
-            self.bns.append(nn.BatchNorm1d(hidden_channels))
+            self.convs.append(NNConv(hidden_channels, self.rank, nn=nn_edge, aggr='mean'))
+            self.bns.append(nn.BatchNorm1d(self.rank))
+
+        # Project back from rank to hidden_channels after message-passing
+        self.rank_proj = nn.Linear(self.rank, hidden_channels)
 
         self.mlp = nn.Sequential(
             nn.Linear(2 * hidden_channels, hidden_channels),
@@ -56,15 +62,15 @@ class ECGNNEdgePredictor(torch.nn.Module):
             # Dynamically compute edge features based on current node embeddings
             edge_attr = torch.cat([x[edge_index[0]], x[edge_index[1]]], dim=-1)
             
-            x = conv(x, edge_index, edge_attr)
-            x = bn(x)
-            x = F.relu(x)
-            x = F.dropout(x, p=self.dropout_rate, training=self.training)
-            x = x + residual
+            h = conv(x, edge_index, edge_attr)
+            h = bn(h)
+            h = F.relu(h)
+            h = F.dropout(h, p=self.dropout_rate, training=self.training)
+            x = self.rank_proj(h) + residual
 
         # Step 3 - edge predictions aligned with the branch label vector
         num_graphs = batch.num_graphs
-        num_nodes_per_graph = 30  # Fixed for IEEE-30
+        num_nodes_per_graph = 57  # Fixed for IEEE-57
 
         offsets = torch.arange(
             0, num_graphs * num_nodes_per_graph, num_nodes_per_graph, device=x.device

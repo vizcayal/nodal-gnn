@@ -73,7 +73,7 @@ class PINNEdgePredictor(torch.nn.Module):
 
         # Step 4: Extract edge features
         num_graphs = batch.num_graphs
-        num_nodes_per_graph = 30 # Fixed for IEEE-30
+        num_nodes_per_graph = 57  # Fixed for IEEE-57
 
         offsets = torch.arange(
             0, num_graphs * num_nodes_per_graph, num_nodes_per_graph, device=x.device
