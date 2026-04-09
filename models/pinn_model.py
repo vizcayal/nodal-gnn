@@ -18,12 +18,13 @@ class PINNEdgePredictor(torch.nn.Module):
     """
 
     def __init__(self, in_channels, hidden_channels, branch_u, branch_v,
-                 dropout_rate=0.2, num_layers=5):
+                 dropout_rate=0.2, num_layers=5, num_edge_feats=0):
         super().__init__()
         self.branch_u = branch_u
         self.branch_v = branch_v
         self.dropout_rate = dropout_rate
         self.num_layers = num_layers
+        self.num_edge_feats = num_edge_feats
 
         # Project raw node features
         self.input_proj = nn.Linear(in_channels, hidden_channels)
@@ -45,9 +46,9 @@ class PINNEdgePredictor(torch.nn.Module):
         )
 
         # Edge-level MLP head
-        # Input size: 2 * hidden_channels (node embeddings) + 1 (delta theta)
+        # Input size: 2 * hidden_channels (node embeddings) + 1 (delta theta) + edge feats
         self.mlp = nn.Sequential(
-            nn.Linear(2 * hidden_channels + 1, hidden_channels),
+            nn.Linear(2 * hidden_channels + 1 + num_edge_feats, hidden_channels),
             nn.ReLU(),
             nn.Dropout(dropout_rate),
             nn.Linear(hidden_channels, 1),
@@ -91,6 +92,11 @@ class PINNEdgePredictor(torch.nn.Module):
 
         # Step 5: Final edge prediction combining latent embeddings and physics features
         combined_edge_features = torch.cat([edge_features, delta_theta], dim=-1)
+        if self.num_edge_feats > 0:
+            smax = batch.smax.view(-1, 1)
+            status = batch.status.view(-1, 1)
+            b = batch.b.view(-1, 1)
+            combined_edge_features = torch.cat([combined_edge_features, smax, status, b], dim=-1)
         
         return self.mlp(combined_edge_features)
 
