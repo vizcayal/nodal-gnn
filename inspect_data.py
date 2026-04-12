@@ -2,7 +2,7 @@ import h5py
 import gzip
 import os
 
-data_dir = r"C:\Users\luisv\ML-AI\case studies of ml\nodal-gnn\PGLearn-Small-30_ieee\train"
+data_dir = r"PGLearn-Small-57_ieee-nminus1\train"
 
 def inspect_h5_gz(file_path, out_file):
     out_file.write(f"\n--- Inspecting {file_path} ---\n")
