@@ -60,7 +60,7 @@ class IEEECongestionCSVDataset(Dataset):
         status_data = torch.tensor(row[91:171], dtype=torch.float32)
         targets = torch.tensor(row[171:], dtype=torch.float32).unsqueeze(-1)
         
-        x = torch.zeros((57, 5), dtype=torch.float32)
+        x = torch.zeros((57, 6), dtype=torch.float32)
         
         num_loads = min(len(self.load_buses), pd_data.shape[0])
         x[self.load_buses[:num_loads], 0] = pd_data[:num_loads]
@@ -74,11 +74,16 @@ class IEEECongestionCSVDataset(Dataset):
         x[:, 4] = self.pgmin_per_bus
         
         active_edges = []
+        degree = torch.zeros(57, dtype=torch.float32)
         for branch_idx, is_active in enumerate(status_data):
             if is_active > 0.5:
                 u, v = self.branches[branch_idx]
                 active_edges.append([u, v])
                 active_edges.append([v, u])
+                degree[u] += 1
+                degree[v] += 1
+        # Degree centrality: normalize by max possible degree (N-1 = 56)
+        x[:, 5] = degree / 56.0
                 
         if len(active_edges) > 0:
             edge_index = torch.tensor(active_edges, dtype=torch.long).t().contiguous()

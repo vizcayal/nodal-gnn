@@ -1,0 +1,188 @@
+
+========================================
+Training GraphSAGE with optimal params
+========================================
+  hidden=32, lr=0.00932, dropout=0.037, pos_weight=1.32, batch_size=128
+Epoch   5/200 | loss=0.0045 | val_acc=0.9991 | precision=0.5300 | recall=0.9748
+Epoch  10/200 | loss=0.0029 | val_acc=0.9984 | precision=0.3912 | recall=0.9558
+Epoch  15/200 | loss=0.0026 | val_acc=0.9995 | precision=0.6943 | recall=0.9495
+Epoch  20/200 | loss=0.0025 | val_acc=0.9997 | precision=0.8198 | recall=0.8896
+Epoch  25/200 | loss=0.0020 | val_acc=0.9991 | precision=0.5548 | recall=0.9338
+Epoch  30/200 | loss=0.0019 | val_acc=0.9993 | precision=0.6020 | recall=0.9732
+Epoch  35/200 | loss=0.0018 | val_acc=0.9983 | precision=0.3780 | recall=0.8580
+Epoch  40/200 | loss=0.0018 | val_acc=0.9993 | precision=0.6144 | recall=0.9274
+Epoch  45/200 | loss=0.0016 | val_acc=0.9995 | precision=0.6758 | recall=0.9732
+Epoch  50/200 | loss=0.0017 | val_acc=0.9998 | precision=0.8605 | recall=0.9148
+Epoch  55/200 | loss=0.0016 | val_acc=0.9995 | precision=0.6707 | recall=0.9669
+Epoch  60/200 | loss=0.0015 | val_acc=0.9997 | precision=0.7751 | recall=0.9511
+Epoch  65/200 | loss=0.0015 | val_acc=0.9983 | precision=0.3783 | recall=0.8707
+Epoch  70/200 | loss=0.0014 | val_acc=0.9996 | precision=0.7374 | recall=0.9479
+Epoch  75/200 | loss=0.0014 | val_acc=0.9997 | precision=0.7879 | recall=0.9669
+Epoch  80/200 | loss=0.0014 | val_acc=0.9994 | precision=0.6553 | recall=0.9416
+Epoch  85/200 | loss=0.0014 | val_acc=0.9997 | precision=0.8493 | recall=0.9243
+Epoch  90/200 | loss=0.0014 | val_acc=0.9997 | precision=0.7912 | recall=0.9621
+Epoch  95/200 | loss=0.0013 | val_acc=0.9997 | precision=0.8047 | recall=0.9685
+Epoch 100/200 | loss=0.0012 | val_acc=0.9996 | precision=0.7233 | recall=0.9606
+Epoch 105/200 | loss=0.0013 | val_acc=0.9997 | precision=0.8407 | recall=0.9322
+Epoch 110/200 | loss=0.0013 | val_acc=0.9996 | precision=0.7230 | recall=0.9716
+Epoch 115/200 | loss=0.0011 | val_acc=0.9996 | precision=0.7298 | recall=0.9669
+Epoch 120/200 | loss=0.0012 | val_acc=0.9996 | precision=0.7534 | recall=0.9732
+Epoch 125/200 | loss=0.0012 | val_acc=0.9997 | precision=0.7935 | recall=0.9574
+Epoch 130/200 | loss=0.0011 | val_acc=0.9996 | precision=0.7637 | recall=0.9685
+Epoch 135/200 | loss=0.0011 | val_acc=0.9997 | precision=0.7865 | recall=0.9763
+Epoch 140/200 | loss=0.0011 | val_acc=0.9997 | precision=0.8162 | recall=0.9527
+Epoch 145/200 | loss=0.0011 | val_acc=0.9996 | precision=0.7408 | recall=0.9826
+Epoch 150/200 | loss=0.0011 | val_acc=0.9997 | precision=0.7908 | recall=0.9716
+Epoch 155/200 | loss=0.0011 | val_acc=0.9998 | precision=0.8768 | recall=0.9432
+Epoch 160/200 | loss=0.0011 | val_acc=0.9997 | precision=0.8026 | recall=0.9558
+Epoch 165/200 | loss=0.0010 | val_acc=0.9996 | precision=0.7673 | recall=0.9621
+Epoch 170/200 | loss=0.0011 | val_acc=0.9996 | precision=0.7440 | recall=0.9811
+Epoch 175/200 | loss=0.0009 | val_acc=0.9998 | precision=0.8859 | recall=0.9432
+Epoch 180/200 | loss=0.0010 | val_acc=0.9998 | precision=0.9204 | recall=0.8754
+Epoch 185/200 | loss=0.0010 | val_acc=0.9998 | precision=0.8356 | recall=0.9621
+Epoch 190/200 | loss=0.0009 | val_acc=0.9998 | precision=0.8810 | recall=0.9338
+Epoch 195/200 | loss=0.0010 | val_acc=0.9996 | precision=0.7605 | recall=0.9669
+Epoch 200/200 | loss=0.0011 | val_acc=0.9998 | precision=0.9076 | recall=0.8833
+Test Accuracy: 0.9998 | F1: 0.9019
+Model saved to models\trained\GraphSAGE.pkl
+
+========================================
+Training GAT with optimal params
+========================================
+  hidden=128, lr=0.00158, dropout=0.004, pos_weight=3.37, batch_size=512
+Epoch   5/200 | loss=0.0076 | val_acc=0.9994 | precision=0.7368 | recall=0.7461
+Epoch  10/200 | loss=0.0034 | val_acc=0.9991 | precision=0.5403 | recall=0.9842
+Epoch  15/200 | loss=0.0032 | val_acc=0.9993 | precision=0.6083 | recall=0.9921
+Epoch  20/200 | loss=0.0024 | val_acc=0.9996 | precision=0.7159 | recall=0.9700
+Epoch  25/200 | loss=0.0022 | val_acc=0.9996 | precision=0.7743 | recall=0.9306
+Epoch  30/200 | loss=0.0020 | val_acc=0.9996 | precision=0.7463 | recall=0.9653
+Epoch  35/200 | loss=0.0019 | val_acc=0.9997 | precision=0.8406 | recall=0.9401
+Epoch  40/200 | loss=0.0036 | val_acc=0.9991 | precision=0.5436 | recall=0.9543
+Epoch  45/200 | loss=0.0020 | val_acc=0.9995 | precision=0.6807 | recall=0.9685
+Epoch  50/200 | loss=0.0018 | val_acc=0.9996 | precision=0.7266 | recall=0.9811
+Epoch  55/200 | loss=0.0018 | val_acc=0.9996 | precision=0.7353 | recall=0.9685
+Epoch  60/200 | loss=0.0018 | val_acc=0.9996 | precision=0.7553 | recall=0.9590
+Epoch  65/200 | loss=0.0019 | val_acc=0.9998 | precision=0.9126 | recall=0.8565
+Epoch  70/200 | loss=0.0014 | val_acc=0.9994 | precision=0.6369 | recall=0.9685
+Epoch  75/200 | loss=0.0014 | val_acc=0.9996 | precision=0.7235 | recall=0.9779
+Epoch  80/200 | loss=0.0016 | val_acc=0.9997 | precision=0.7733 | recall=0.9795
+Epoch  85/200 | loss=0.0013 | val_acc=0.9994 | precision=0.6674 | recall=0.9495
+Epoch  90/200 | loss=0.0012 | val_acc=0.9998 | precision=0.8834 | recall=0.9322
+Epoch  95/200 | loss=0.0013 | val_acc=0.9993 | precision=0.6104 | recall=0.9811
+Epoch 100/200 | loss=0.0012 | val_acc=0.9996 | precision=0.7344 | recall=0.9637
+Epoch 105/200 | loss=0.0013 | val_acc=0.9997 | precision=0.7835 | recall=0.9763
+Epoch 110/200 | loss=0.0012 | val_acc=0.9997 | precision=0.8045 | recall=0.9606
+Epoch 115/200 | loss=0.0010 | val_acc=0.9998 | precision=0.8967 | recall=0.8896
+Epoch 120/200 | loss=0.0009 | val_acc=0.9996 | precision=0.7218 | recall=0.9700
+Epoch 125/200 | loss=0.0013 | val_acc=0.9994 | precision=0.6255 | recall=0.9748
+Epoch 130/200 | loss=0.0009 | val_acc=0.9992 | precision=0.5806 | recall=0.9606
+Epoch 135/200 | loss=0.0008 | val_acc=0.9994 | precision=0.6501 | recall=0.9700
+Epoch 140/200 | loss=0.0010 | val_acc=0.9998 | precision=0.8859 | recall=0.9432
+Epoch 145/200 | loss=0.0008 | val_acc=0.9995 | precision=0.6953 | recall=0.9716
+Epoch 150/200 | loss=0.0009 | val_acc=0.9997 | precision=0.8965 | recall=0.7650
+Epoch 155/200 | loss=0.0006 | val_acc=0.9998 | precision=0.8936 | recall=0.9401
+Epoch 160/200 | loss=0.0008 | val_acc=0.9998 | precision=0.9282 | recall=0.8975
+Epoch 165/200 | loss=0.0007 | val_acc=0.9995 | precision=0.7032 | recall=0.9716
+Epoch 170/200 | loss=0.0005 | val_acc=0.9998 | precision=0.8907 | recall=0.9511
+Epoch 175/200 | loss=0.0004 | val_acc=0.9998 | precision=0.8694 | recall=0.9448
+Epoch 180/200 | loss=0.0006 | val_acc=0.9998 | precision=0.9378 | recall=0.8565
+Epoch 185/200 | loss=0.0006 | val_acc=0.9998 | precision=0.9577 | recall=0.8218
+Epoch 190/200 | loss=0.0006 | val_acc=0.9998 | precision=0.9350 | recall=0.9069
+Epoch 195/200 | loss=0.0010 | val_acc=0.9998 | precision=0.8899 | recall=0.9432
+Epoch 200/200 | loss=0.0004 | val_acc=0.9998 | precision=0.8573 | recall=0.9574
+Test Accuracy: 0.9998 | F1: 0.9132
+Model saved to models\trained\GAT.pkl
+
+========================================
+Training MPNN with optimal params
+========================================
+  hidden=32, lr=0.00172, dropout=0.059, pos_weight=1.38, batch_size=128
+Epoch   5/200 | loss=0.0055 | val_acc=0.9986 | precision=0.4263 | recall=0.9038
+Epoch  10/200 | loss=0.0032 | val_acc=0.9996 | precision=0.7375 | recall=0.9527
+Epoch  15/200 | loss=0.0027 | val_acc=0.9994 | precision=0.6576 | recall=0.9574
+Epoch  20/200 | loss=0.0023 | val_acc=0.9985 | precision=0.4064 | recall=0.8864
+Epoch  25/200 | loss=0.0022 | val_acc=0.9996 | precision=0.7601 | recall=0.9543
+Epoch  30/200 | loss=0.0020 | val_acc=0.9996 | precision=0.7571 | recall=0.9637
+Epoch  35/200 | loss=0.0019 | val_acc=0.9997 | precision=0.8309 | recall=0.8991
+Epoch  40/200 | loss=0.0017 | val_acc=0.9996 | precision=0.7285 | recall=0.9479
+Epoch  45/200 | loss=0.0016 | val_acc=0.9996 | precision=0.7163 | recall=0.9716
+Epoch  50/200 | loss=0.0015 | val_acc=0.9997 | precision=0.7823 | recall=0.9637
+Epoch  55/200 | loss=0.0015 | val_acc=0.9997 | precision=0.7702 | recall=0.9621
+Epoch  60/200 | loss=0.0015 | val_acc=0.9992 | precision=0.5851 | recall=0.9543
+Epoch  65/200 | loss=0.0013 | val_acc=0.9995 | precision=0.6884 | recall=0.9653
+Epoch  70/200 | loss=0.0013 | val_acc=0.9998 | precision=0.8863 | recall=0.9101
+Epoch  75/200 | loss=0.0014 | val_acc=0.9992 | precision=0.5726 | recall=0.9022
+Epoch  80/200 | loss=0.0012 | val_acc=0.9996 | precision=0.7627 | recall=0.9732
+Epoch  85/200 | loss=0.0012 | val_acc=0.9997 | precision=0.7829 | recall=0.9669
+Epoch  90/200 | loss=0.0012 | val_acc=0.9996 | precision=0.7593 | recall=0.9700
+Epoch  95/200 | loss=0.0012 | val_acc=0.9996 | precision=0.7277 | recall=0.9779
+Epoch 100/200 | loss=0.0012 | val_acc=0.9995 | precision=0.7129 | recall=0.9322
+Epoch 105/200 | loss=0.0010 | val_acc=0.9996 | precision=0.7714 | recall=0.9369
+Epoch 110/200 | loss=0.0011 | val_acc=0.9997 | precision=0.7965 | recall=0.9448
+Epoch 115/200 | loss=0.0010 | val_acc=0.9995 | precision=0.7020 | recall=0.9621
+Epoch 120/200 | loss=0.0010 | val_acc=0.9996 | precision=0.7451 | recall=0.9637
+Epoch 125/200 | loss=0.0009 | val_acc=0.9997 | precision=0.7872 | recall=0.9511
+Epoch 130/200 | loss=0.0011 | val_acc=0.9997 | precision=0.8299 | recall=0.9543
+Epoch 135/200 | loss=0.0010 | val_acc=0.9998 | precision=0.8616 | recall=0.9621
+Epoch 140/200 | loss=0.0010 | val_acc=0.9997 | precision=0.7630 | recall=0.9748
+Epoch 145/200 | loss=0.0010 | val_acc=0.9995 | precision=0.6862 | recall=0.9621
+Epoch 150/200 | loss=0.0009 | val_acc=0.9995 | precision=0.6979 | recall=0.9621
+Epoch 155/200 | loss=0.0009 | val_acc=0.9997 | precision=0.8384 | recall=0.9085
+Epoch 160/200 | loss=0.0009 | val_acc=0.9997 | precision=0.7746 | recall=0.9700
+Epoch 165/200 | loss=0.0009 | val_acc=0.9996 | precision=0.7506 | recall=0.9637
+Epoch 170/200 | loss=0.0009 | val_acc=0.9997 | precision=0.7920 | recall=0.9669
+Epoch 175/200 | loss=0.0008 | val_acc=0.9997 | precision=0.8359 | recall=0.9401
+Epoch 180/200 | loss=0.0008 | val_acc=0.9996 | precision=0.7402 | recall=0.9574
+Epoch 185/200 | loss=0.0008 | val_acc=0.9996 | precision=0.7587 | recall=0.9621
+Epoch 190/200 | loss=0.0008 | val_acc=0.9997 | precision=0.7782 | recall=0.9464
+Epoch 195/200 | loss=0.0007 | val_acc=0.9998 | precision=0.8916 | recall=0.9338
+Epoch 200/200 | loss=0.0007 | val_acc=0.9996 | precision=0.7658 | recall=0.9543
+Test Accuracy: 0.9997 | F1: 0.8663
+Model saved to models\trained\MPNN.pkl
+
+========================================
+Training ECGNN with optimal params
+========================================
+  hidden=32, lr=0.00417, dropout=0.055, pos_weight=1.67, batch_size=128
+Epoch   5/200 | loss=0.0039 | val_acc=0.9996 | precision=0.7229 | recall=0.9464
+Epoch  10/200 | loss=0.0024 | val_acc=0.9997 | precision=0.7772 | recall=0.9464
+Epoch  15/200 | loss=0.0022 | val_acc=0.9996 | precision=0.7316 | recall=0.9590
+Epoch  20/200 | loss=0.0021 | val_acc=0.9996 | precision=0.7346 | recall=0.9385
+Epoch  25/200 | loss=0.0018 | val_acc=0.9995 | precision=0.6810 | recall=0.9732
+Epoch  30/200 | loss=0.0017 | val_acc=0.9995 | precision=0.6725 | recall=0.9748
+Epoch  35/200 | loss=0.0015 | val_acc=0.9995 | precision=0.7121 | recall=0.9558
+Epoch  40/200 | loss=0.0014 | val_acc=0.9997 | precision=0.8632 | recall=0.9054
+Epoch  45/200 | loss=0.0013 | val_acc=0.9996 | precision=0.7541 | recall=0.9527
+Epoch  50/200 | loss=0.0013 | val_acc=0.9997 | precision=0.7880 | recall=0.9558
+Epoch  55/200 | loss=0.0013 | val_acc=0.9996 | precision=0.7284 | recall=0.9685
+Epoch  60/200 | loss=0.0011 | val_acc=0.9994 | precision=0.6531 | recall=0.9590
+Epoch  65/200 | loss=0.0011 | val_acc=0.9998 | precision=0.8471 | recall=0.9527
+Epoch  70/200 | loss=0.0011 | val_acc=0.9995 | precision=0.6730 | recall=0.9479
+Epoch  75/200 | loss=0.0010 | val_acc=0.9994 | precision=0.6432 | recall=0.9637
+Epoch  80/200 | loss=0.0010 | val_acc=0.9997 | precision=0.9042 | recall=0.7744
+Epoch  85/200 | loss=0.0008 | val_acc=0.9997 | precision=0.8266 | recall=0.9401
+Epoch  90/200 | loss=0.0008 | val_acc=0.9998 | precision=0.8606 | recall=0.9543
+Epoch  95/200 | loss=0.0009 | val_acc=0.9998 | precision=0.8879 | recall=0.9369
+Epoch 100/200 | loss=0.0007 | val_acc=0.9998 | precision=0.8361 | recall=0.9574
+Epoch 105/200 | loss=0.0007 | val_acc=0.9998 | precision=0.8907 | recall=0.9511
+Epoch 110/200 | loss=0.0007 | val_acc=0.9998 | precision=0.8551 | recall=0.9495
+Epoch 115/200 | loss=0.0007 | val_acc=0.9998 | precision=0.8469 | recall=0.9511
+Epoch 120/200 | loss=0.0006 | val_acc=0.9996 | precision=0.7497 | recall=0.9495
+Epoch 125/200 | loss=0.0007 | val_acc=0.9997 | precision=0.7834 | recall=0.9527
+Epoch 130/200 | loss=0.0005 | val_acc=0.9998 | precision=0.8416 | recall=0.9637
+Epoch 135/200 | loss=0.0005 | val_acc=0.9997 | precision=0.7886 | recall=0.9590
+Epoch 140/200 | loss=0.0005 | val_acc=0.9998 | precision=0.9009 | recall=0.9180
+Epoch 145/200 | loss=0.0005 | val_acc=0.9998 | precision=0.8881 | recall=0.9511
+Epoch 150/200 | loss=0.0005 | val_acc=0.9997 | precision=0.8366 | recall=0.9448
+Epoch 155/200 | loss=0.0005 | val_acc=0.9998 | precision=0.8796 | recall=0.9448
+Epoch 160/200 | loss=0.0006 | val_acc=0.9998 | precision=0.8779 | recall=0.9069
+Epoch 165/200 | loss=0.0005 | val_acc=0.9997 | precision=0.9062 | recall=0.8233
+Epoch 170/200 | loss=0.0004 | val_acc=0.9998 | precision=0.8837 | recall=0.9464
+Epoch 175/200 | loss=0.0005 | val_acc=0.9998 | precision=0.8509 | recall=0.9543
+Epoch 180/200 | loss=0.0004 | val_acc=0.9998 | precision=0.9108 | recall=0.9022
+Epoch 185/200 | loss=0.0007 | val_acc=0.9998 | precision=0.9011 | recall=0.9196
+Epoch 190/200 | loss=0.0004 | val_acc=0.9998 | precision=0.8805 | recall=0.9416
+Epoch 195/200 | loss=0.0003 | val_acc=0.9998 | precision=0.8958 | recall=0.9353
+Epoch 200/200 | loss=0.0004 | val_acc=0.9997 | precision=0.8129 | recall=0.9527
+Test Accuracy: 0.9998 | F1: 0.9025
+Model saved to models\trained\ECGNN.pkl
