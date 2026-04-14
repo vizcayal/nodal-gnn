@@ -6,9 +6,19 @@ import torch
 from torch_geometric.data import Data, Dataset
 import pandapower.networks as nw
 
+
+def _first_existing_path(candidates, description):
+    for candidate in candidates:
+        if candidate and os.path.exists(candidate):
+            return candidate
+
+    checked = "\n".join(f"- {path}" for path in candidates if path)
+    raise FileNotFoundError(f"Unable to locate {description}. Checked:\n{checked}")
+
 class IEEECongestionCSVDataset(Dataset):
     def __init__(self, csv_file):
         super().__init__()
+        csv_file = os.path.abspath(os.path.expanduser(os.path.expandvars(csv_file)))
         self.df = pd.read_csv(csv_file)
         
         net = nw.case57()
@@ -41,7 +51,15 @@ class IEEECongestionCSVDataset(Dataset):
         self.branch_v = torch.tensor([b[1] for b in self.branches], dtype=torch.long)
         
         # Branch thermal limits (smax) from case.json in p.u.
-        case_path = os.path.join(os.path.dirname(csv_file), "PGLearn-Small-57_ieee-nminus1", "case.json")
+        repo_dir = os.path.dirname(os.path.abspath(__file__))
+        case_path = _first_existing_path(
+            [
+                os.environ.get("CSML_CASE_PATH"),
+                os.path.join(os.path.dirname(csv_file), "PGLearn-Small-57_ieee-nminus1", "case.json"),
+                os.path.join(repo_dir, "PGLearn-Small-57_ieee-nminus1", "case.json"),
+            ],
+            "case.json",
+        )
         with open(case_path) as f:
             case_data = json.load(f)['data']
         self.smax = torch.tensor(case_data['smax'], dtype=torch.float32)
