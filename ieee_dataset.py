@@ -55,8 +55,8 @@ class IEEECongestionCSVDataset(Dataset):
         case_path = _first_existing_path(
             [
                 os.environ.get("CSML_CASE_PATH"),
-                os.path.join(os.path.dirname(csv_file), "PGLearn-Small-57_ieee-nminus1", "case.json"),
-                os.path.join(repo_dir, "PGLearn-Small-57_ieee-nminus1", "case.json"),
+                os.path.join(os.path.dirname(csv_file), "nodal-gnn", "case.json"),
+                os.path.join(repo_dir, "case.json"),
             ],
             "case.json",
         )
