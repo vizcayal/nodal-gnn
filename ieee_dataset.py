@@ -13,6 +13,10 @@ class IEEECongestionCSVDataset(Dataset):
         
         net = nw.case57()
         base_mva = 100.0
+
+        case_path = os.path.join(os.path.dirname(csv_file), "PGLearn-Small-57_ieee-nminus1", "case.json")
+        with open(case_path) as f:
+            case_data = json.load(f)["data"]
         
         self.load_buses = torch.tensor(net.load.bus.values, dtype=torch.long)
         self.gen_buses = torch.tensor(np.concatenate([net.ext_grid.bus.values, net.gen.bus.values]), dtype=torch.long)
@@ -30,22 +34,30 @@ class IEEECongestionCSVDataset(Dataset):
             pgmin_per_bus[int(row.bus)] = row.min_p_mw / base_mva
         self.pgmax_per_bus = pgmax_per_bus
         self.pgmin_per_bus = pgmin_per_bus
-        
-        self.branches = []
-        for idx, row in net.line.iterrows():
-            self.branches.append((int(row.from_bus), int(row.to_bus)))
-        for idx, row in net.trafo.iterrows():
-            self.branches.append((int(row.hv_bus), int(row.lv_bus)))
-            
-        self.branch_u = torch.tensor([b[0] for b in self.branches], dtype=torch.long)
-        self.branch_v = torch.tensor([b[1] for b in self.branches], dtype=torch.long)
-        
-        # Branch thermal limits (smax) from case.json in p.u.
-        case_path = os.path.join(os.path.dirname(csv_file), "PGLearn-Small-57_ieee-nminus1", "case.json")
-        with open(case_path) as f:
-            case_data = json.load(f)['data']
-        self.smax = torch.tensor(case_data['smax'], dtype=torch.float32)
-        self.b = torch.tensor(case_data['b'], dtype=torch.float32)
+
+        # Keep branch indexing in case/H5 order so status, smax, b, and y are aligned.
+        bus_fr = np.array(case_data["bus_fr"], dtype=np.int64) - 1
+        bus_to = np.array(case_data["bus_to"], dtype=np.int64) - 1
+        self.smax = torch.tensor(case_data["smax"], dtype=torch.float32)
+        self.b = torch.tensor(case_data["b"], dtype=torch.float32)
+
+        if len(bus_fr) != len(self.smax):
+            raise ValueError("Branch endpoint count and smax count do not match in case.json.")
+
+        self.branches = list(zip(bus_fr.tolist(), bus_to.tolist()))
+        self.branch_u = torch.tensor(bus_fr, dtype=torch.long)
+        self.branch_v = torch.tensor(bus_to, dtype=torch.long)
+
+        # Sanity check topology consistency against pandapower (ignoring direction/order).
+        pp_branches = []
+        for _, row in net.line.iterrows():
+            pp_branches.append((int(row.from_bus), int(row.to_bus)))
+        for _, row in net.trafo.iterrows():
+            pp_branches.append((int(row.hv_bus), int(row.lv_bus)))
+
+        normalize = lambda pairs: {tuple(sorted(pair)) for pair in pairs}
+        if normalize(self.branches) != normalize(pp_branches):
+            raise ValueError("case.json branch endpoints do not match pandapower case57 topology.")
         
     def __len__(self):
         return len(self.df)
